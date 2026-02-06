@@ -1,0 +1,126 @@
+{
+  "name": "vsc-tab",
+  "displayName": "VSC Tab",
+  "description": "Manage multiple projects in a single VS Code window with tabs",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vsc-tab.addTab",
+        "title": "VSC Tab: Add Project",
+        "icon": "$(add)"
+      },
+      {
+        "command": "vsc-tab.removeTab",
+        "title": "Remove",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "vsc-tab.renameTab",
+        "title": "Rename",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "vsc-tab.switchTab",
+        "title": "Open Project",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "vsc-tab.saveCurrentAsTab",
+        "title": "VSC Tab: Save Current Folder as Tab",
+        "icon": "$(save)"
+      },
+      {
+        "command": "vsc-tab.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vsc-tab-container",
+          "title": "VSC Tab",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "vsc-tab-container": [
+        {
+          "id": "vsc-tab-projects",
+          "name": "Projects",
+          "icon": "$(folder)",
+          "contextualTitle": "VSC Tab"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "vsc-tab.addTab",
+          "when": "view == vsc-tab-projects",
+          "group": "navigation@1"
+        },
+        {
+          "command": "vsc-tab.saveCurrentAsTab",
+          "when": "view == vsc-tab-projects",
+          "group": "navigation@2"
+        },
+        {
+          "command": "vsc-tab.refresh",
+          "when": "view == vsc-tab-projects",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "vsc-tab.renameTab",
+          "when": "view == vsc-tab-projects && viewItem =~ /^tab/",
+          "group": "inline@1"
+        },
+        {
+          "command": "vsc-tab.removeTab",
+          "when": "view == vsc-tab-projects && viewItem =~ /^tab/",
+          "group": "inline@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.54.0",
+    "eslint": "^9.39.2",
+    "esbuild": "^0.27.2",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
