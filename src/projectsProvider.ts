@@ -43,6 +43,9 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
     private tabs: ProjectTab[] = [];
     private activeTabId: string | null = null;
 
+    private _onDidChangeTabs = new vscode.EventEmitter<void>();
+    readonly onDidChangeTabs = this._onDidChangeTabs.event;
+
     constructor(private context: vscode.ExtensionContext) {
         this.load();
         this.detectActiveTab();
@@ -51,12 +54,18 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
         vscode.workspace.onDidChangeWorkspaceFolders(() => {
             this.detectActiveTab();
             this._onDidChangeTreeData.fire();
+            this._onDidChangeTabs.fire();
         });
     }
+
+    /** Dışarıdan tab listesine erişim */
+    getTabs(): readonly ProjectTab[] { return this.tabs; }
+    getActiveTabId(): string | null { return this.activeTabId; }
 
     refresh(): void {
         this.detectActiveTab();
         this._onDidChangeTreeData.fire();
+        this._onDidChangeTabs.fire();
     }
 
     // ── Persistence ────────────────────────────────────────
@@ -170,6 +179,16 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
             // Fallback: updateWorkspaceFolders başarısız olursa eski yöntemle aç
             await vscode.commands.executeCommand('vscode.openFolder', uri, { forceNewWindow: false });
         }
+
+        this._onDidChangeTabs.fire();
+    }
+
+    /** ID ile tab'a geçiş — status bar'dan çağrılır */
+    async switchTabById(tabId: string): Promise<void> {
+        const tab = this.tabs.find(t => t.id === tabId);
+        if (!tab) { return; }
+        const treeItem = new TabTreeItem(tab, false);
+        await this.switchTab(treeItem);
     }
 
     // ── Mevcut klasörü tab olarak kaydet ───────────────────
@@ -248,6 +267,7 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
 
         this.save();
         this.refresh();
+        this._onDidChangeTabs.fire();
     }
 
     async removeTab(item: TabTreeItem): Promise<void> {
@@ -264,6 +284,7 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
         }
         this.save();
         this.refresh();
+        this._onDidChangeTabs.fire();
     }
 
     async renameTab(item: TabTreeItem): Promise<void> {
@@ -278,6 +299,7 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
             tab.name = newName;
             this.save();
             this.refresh();
+            this._onDidChangeTabs.fire();
         }
     }
 }

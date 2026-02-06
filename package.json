@@ -36,6 +36,10 @@
         "icon": "$(folder-opened)"
       },
       {
+        "command": "vsc-tab.switchTabById",
+        "title": "VSC Tab: Switch to Project by ID"
+      },
+      {
         "command": "vsc-tab.saveCurrentAsTab",
         "title": "VSC Tab: Save Current Folder as Tab",
         "icon": "$(save)"
