@@ -166,19 +166,9 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
         this.save();
 
         const uri = vscode.Uri.file(tab.path);
-        const currentFolders = vscode.workspace.workspaceFolders || [];
 
-        // Pencereyi yeniden yüklemeden klasörü değiştir — smooth geçiş
-        const success = vscode.workspace.updateWorkspaceFolders(
-            0,
-            currentFolders.length,
-            { uri, name: tab.name }
-        );
-
-        if (!success) {
-            // Fallback: updateWorkspaceFolders başarısız olursa eski yöntemle aç
-            await vscode.commands.executeCommand('vscode.openFolder', uri, { forceNewWindow: false });
-        }
+        // Aynı pencerede aç — pencere yeniden yüklenir ama extension hızlı aktive olur
+        await vscode.commands.executeCommand('vscode.openFolder', uri, { forceNewWindow: false });
 
         this._onDidChangeTabs.fire();
     }
