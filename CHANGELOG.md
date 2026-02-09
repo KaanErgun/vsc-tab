@@ -2,6 +2,12 @@
 
 All notable changes to the "vsc-tab" extension will be documented in this file.
 
+## [1.1.0] - 2026-02-09
+
+### Added
+- Settings icon in the view title bar
+- `vscTab.defaultFolder` setting to configure the default folder for Add Project dialog
+
 ## [1.0.1] - 2026-02-09
 
 ### Improved
