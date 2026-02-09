@@ -2,7 +2,30 @@
   "name": "vsc-tab",
   "displayName": "VSC Tab",
   "description": "Manage multiple projects in a single VS Code window with tabs",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "KaanErgun",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KaanErgun/vsc-tab"
+  },
+  "homepage": "https://github.com/KaanErgun/vsc-tab#readme",
+  "bugs": {
+    "url": "https://github.com/KaanErgun/vsc-tab/issues"
+  },
+  "keywords": [
+    "project",
+    "workspace",
+    "tabs",
+    "multi-root",
+    "project-manager",
+    "workspace-manager"
+  ],
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.109.0"
   },

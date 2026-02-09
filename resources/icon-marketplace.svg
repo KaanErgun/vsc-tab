@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4FC3F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background rounded rectangle -->
+  <rect x="8" y="8" width="240" height="240" rx="32" ry="32" fill="url(#bg)"/>
+  <!-- Tab bar background -->
+  <rect x="36" y="52" width="184" height="152" rx="12" ry="12" fill="#ffffff" opacity="0.95"/>
+  <!-- Tab bar -->
+  <rect x="36" y="52" width="184" height="36" rx="12" ry="12" fill="#e3f2fd"/>
+  <rect x="36" y="76" width="184" height="12" fill="#e3f2fd"/>
+  <!-- Active tab -->
+  <rect x="42" y="56" width="52" height="28" rx="6" ry="6" fill="#1565C0"/>
+  <rect x="42" y="76" width="52" height="12" fill="#ffffff"/>
+  <!-- Tab 2 -->
+  <rect x="100" y="56" width="52" height="28" rx="6" ry="6" fill="transparent" stroke="#90CAF9" stroke-width="1.5"/>
+  <!-- Tab 3 -->
+  <rect x="158" y="56" width="52" height="28" rx="6" ry="6" fill="transparent" stroke="#90CAF9" stroke-width="1.5"/>
+  <!-- Tab labels (lines) -->
+  <line x1="54" y1="70" x2="82" y2="70" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="112" y1="70" x2="140" y2="70" stroke="#90CAF9" stroke-width="3" stroke-linecap="round"/>
+  <line x1="170" y1="70" x2="198" y2="70" stroke="#90CAF9" stroke-width="3" stroke-linecap="round"/>
+  <!-- Content lines -->
+  <line x1="52" y1="108" x2="168" y2="108" stroke="#BBDEFB" stroke-width="4" stroke-linecap="round"/>
+  <line x1="52" y1="124" x2="196" y2="124" stroke="#E3F2FD" stroke-width="4" stroke-linecap="round"/>
+  <line x1="52" y1="140" x2="140" y2="140" stroke="#E3F2FD" stroke-width="4" stroke-linecap="round"/>
+  <line x1="52" y1="156" x2="180" y2="156" stroke="#BBDEFB" stroke-width="4" stroke-linecap="round"/>
+  <line x1="52" y1="172" x2="160" y2="172" stroke="#E3F2FD" stroke-width="4" stroke-linecap="round"/>
+  <line x1="52" y1="188" x2="120" y2="188" stroke="#E3F2FD" stroke-width="4" stroke-linecap="round"/>
+</svg>
