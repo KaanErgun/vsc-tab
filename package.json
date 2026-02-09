@@ -2,7 +2,7 @@
   "name": "vsc-tab",
   "displayName": "VSC Tab",
   "description": "Manage multiple projects in a single VS Code window with tabs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "KaanErgun",
   "license": "MIT",
   "icon": "resources/icon.png",

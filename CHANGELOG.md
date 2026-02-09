@@ -2,6 +2,11 @@
 
 All notable changes to the "vsc-tab" extension will be documented in this file.
 
+## [1.0.1] - 2026-02-09
+
+### Improved
+- Add Project dialog now defaults to user's home directory
+
 ## [1.0.0] - 2026-02-09
 
 ### Added
