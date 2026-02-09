@@ -2,6 +2,12 @@
 
 All notable changes to the "vsc-tab" extension will be documented in this file.
 
+## [1.2.0] - 2026-02-09
+
+### Improved
+- Settings now uses a GUI-based folder picker instead of manual text entry
+- Quick pick menu with options to change, clear default folder or open all settings
+
 ## [1.1.0] - 2026-02-09
 
 ### Added
