@@ -221,13 +221,17 @@ export class ProjectsProvider implements vscode.TreeDataProvider<TabTreeItem> {
     // ── Tab CRUD ───────────────────────────────────────────
 
     async addTab(): Promise<void> {
-        const homeDir = vscode.Uri.file(require('os').homedir());
+        const configuredFolder = vscode.workspace.getConfiguration('vscTab').get<string>('defaultFolder');
+        const defaultPath = configuredFolder && configuredFolder.trim() !== ''
+            ? configuredFolder
+            : require('os').homedir();
+        const defaultUri = vscode.Uri.file(defaultPath);
         const uris = await vscode.window.showOpenDialog({
             canSelectFolders: true,
             canSelectFiles: false,
             canSelectMany: true,
             openLabel: 'Add Project Folder(s)',
-            defaultUri: homeDir
+            defaultUri
         });
         if (!uris || uris.length === 0) { return; }
 

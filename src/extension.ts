@@ -32,6 +32,9 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('vsc-tab.switchTabById', (tabId: string) => provider.switchTabById(tabId)),
 		vscode.commands.registerCommand('vsc-tab.saveCurrentAsTab', () => provider.saveCurrentAsTab()),
 		vscode.commands.registerCommand('vsc-tab.refresh', () => provider.refresh()),
+		vscode.commands.registerCommand('vsc-tab.openSettings', () => {
+			vscode.commands.executeCommand('workbench.action.openSettings', 'vscTab');
+		}),
 	);
 }
 

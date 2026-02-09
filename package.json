@@ -71,8 +71,23 @@
         "command": "vsc-tab.refresh",
         "title": "Refresh",
         "icon": "$(refresh)"
+      },
+      {
+        "command": "vsc-tab.openSettings",
+        "title": "VSC Tab: Settings",
+        "icon": "$(gear)"
       }
     ],
+    "configuration": {
+      "title": "VSC Tab",
+      "properties": {
+        "vscTab.defaultFolder": {
+          "type": "string",
+          "default": "",
+          "description": "Default folder to open when adding a new project. Leave empty to use home directory."
+        }
+      }
+    },
     "viewsContainers": {
       "activitybar": [
         {
@@ -108,6 +123,11 @@
           "command": "vsc-tab.refresh",
           "when": "view == vsc-tab-projects",
           "group": "navigation@3"
+        },
+        {
+          "command": "vsc-tab.openSettings",
+          "when": "view == vsc-tab-projects",
+          "group": "navigation@4"
         }
       ],
       "view/item/context": [
